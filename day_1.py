@@ -17,5 +17,10 @@ def get_elf_with_most_calories(file_name):
     elf_calories_list = sum_each_elf(file_name)
     return max(elf_calories_list)
 
+def get_calories_top_three_elves(file_name):
+    elf_calories_list = sum_each_elf(file_name)
+    return sum(sorted(elf_calories_list,reverse=True)[0:3])
+
 if __name__ == '__main__':
     print(get_elf_with_most_calories('input/day_1_input.txt'))
+    print(get_calories_top_three_elves('input/day_1_input.txt'))
