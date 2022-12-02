@@ -17,13 +17,15 @@ scores = {
     'Scissors': 3
 }
 
+beats = {
+    'Rock': 'Scissors',
+    'Paper': 'Rock',
+    'Scissors': 'Paper'
+}
+
 def did_player_win(opponent_move, player_move):
-    if player_move == 'Rock':
-        return opponent_move == 'Scissors'
-    if player_move == 'Paper':
-        return opponent_move == 'Rock'
-    if player_move == 'Scissors':
-        return opponent_move == 'Paper'
+    return beats[player_move]== opponent_move
+        
 
 def read_inputs(filename):
     return [tuple(line.split(' ')) for line in read_file_of_strings(filename)]
