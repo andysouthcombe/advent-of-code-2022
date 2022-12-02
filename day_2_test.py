@@ -1,5 +1,5 @@
 import pytest
-from day_2 import did_player_win, read_inputs, get_player_score, get_total_score
+from day_2 import did_player_win, read_inputs, get_player_score, get_total_score_part1, get_player_move_required
 
 def test_paper_beats_rock():
     assert did_player_win('Rock', 'Paper') == True
@@ -32,4 +32,7 @@ def test_third_round_scored_ok():
     assert get_player_score(('C', 'Z')) == 6
 
 def test_total_score_correct():
-    assert get_total_score('input/day_2_test_input.txt') == 15
+    assert get_total_score_part1('input/day_2_test_input.txt') == 15
+
+def test_get_a_draw():
+    assert get_player_move_required(('A', 'Y')) == 'Rock'
