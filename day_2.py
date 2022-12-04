@@ -26,16 +26,16 @@ scores = {
     'Scissors': 3
 }
 
-loses_to = {
+wins_over = {
     'Rock': 'Scissors',
     'Paper': 'Rock',
     'Scissors': 'Paper'
 }
 
-beats = dict((value,key) for key,value in loses_to.items())
+loses_to = dict((value,key) for key,value in wins_over.items())
 
 def did_player_win(opponent_move, player_move):
-    return opponent_move == loses_to[player_move]
+    return wins_over[player_move] == opponent_move ## needs refactoring to make clearer
 
 def read_inputs(filename):
     return [tuple(line.split(' ')) for line in read_file_of_strings(filename)]
@@ -58,9 +58,9 @@ def get_player_move_required(round):
     if player_result == 'Draw':
         return opponent_move
     if player_result == 'Lose':
-        return loses_to[opponent_move]
+        return wins_over[opponent_move]
     if player_result == 'Win':
-        return beats[opponent_move]
+        return loses_to[opponent_move]
 
 def get_total_score_part2(filename):
     rounds = read_inputs(filename)
